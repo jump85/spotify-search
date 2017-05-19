@@ -2,7 +2,7 @@
 
 var configModule = angular.module('configModule', []);
 
-	var CONTEXT_ROOT_WEB = '/SpotifyApp/';
+	var CONTEXT_ROOT_WEB = '/spotify-search/';
 
 
 	var CONSTANTS = {
