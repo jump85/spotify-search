@@ -1,0 +1,121 @@
+@base: #4CAF50;
+
+@font-face {
+    font-family: "Raleway";
+    src: url(../Assets/Fonts/raleway/Raleway-Regular.ttf) format("truetype");
+}
+
+.box-shadow(@style, @c) when (iscolor(@c)) {
+  -webkit-box-shadow: @style @c;
+  box-shadow:         @style @c;
+}
+.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
+  .box-shadow(@style, rgba(0, 0, 0, @alpha));
+}
+
+body{
+    font-family: Raleway, Helvetica, sans-serif;
+}
+
+table { 
+    margin: 0 auto;
+    width: 100%;
+}
+
+input{
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    width: 100px;
+    height: 0;
+    border: solid;
+    border-width: 1px;
+    padding: 20px;
+}
+select{
+    background-color:#ffffff;
+    appearance: none;  
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    width: 100px;
+    height: 40px;
+    border: solid;
+    border-width: 1px;
+}
+
+.logo{
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+.content{
+    width: 98%;
+    margin: 0 0 0 0;
+}
+.box {
+    color: saturate(@base, 10%);
+    border-color: lighten(@base, 30%);
+    background-color: lighten(@base, 45%);
+    /* .box-shadow(0 0 5px, 30%); */
+    margin: 20px 0px;
+    padding: 10px;
+}
+
+.search{
+    width: 100%;
+    margin: auto;
+    table{
+        border-spacing: 0 1em;
+        border-collapse: separate;
+        padding: 3%;
+    }
+
+}
+
+
+.result{
+    padding: 5%;
+    table{
+        border-spacing: 0 0.5em;
+        border-collapse: separate;
+    }
+    th, td{
+        text-align: center;
+        padding: 0 5% 0 5%;
+    }
+    tr{
+        .box-shadow(0 0 5px, 30%);
+    }
+}
+
+.button{
+    display: inline;
+    clear:both;
+    float: right;
+    text-align: right;
+    padding-top: 0;
+    margin-right: 0;
+    width: 200px;
+    button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 12px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 30px;
+    }
+
+}
+
+.noitems{
+    text-align: center;
+}
+
+.separator{
+    margin: 0 30px;
+}

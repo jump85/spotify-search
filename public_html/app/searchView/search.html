@@ -1,0 +1,59 @@
+<div  class="content" data-ng-controller="SearchCtrl">
+    <div>
+        <div><img src="{{CONSTANTS.HOME_PAGE}}/Assets/Images/gl-logo@2x.png" width="20"/></div>
+        <div class="logo"><img src="{{CONSTANTS.HOME_PAGE}}/Assets/Images/hero-img@2x.png" width="420" /></div>
+        
+    </div>
+    <div class="search box">
+                Search:
+                <input data-ng-model="search.text">
+                <span class="separator">&nbsp;</span>
+                Type:
+                    <select data-ng-model="search.type" >
+                        <option value="artist">Artist</option>
+                        <option value="album">Album</option>
+                    </select>
+                <span class="separator">&nbsp;</span>
+                Result limit:
+                <input type="number" data-ng-model="search.limit">
+                <div class="button"><button data-ng-disabled="search.text==''" data-ng-click="send()" >SEARCH</button></div>
+
+    </div>
+    
+    <div class="noitems" data-ng-if="displayType != '' && totalItems == 0">No items found. Try again! </div>
+    
+    <div class="result" data-ng-if="displayType != '' && totalItems > 0">
+    <div>Total items found: {{ totalItems }} </div>
+        <div data-ng-if="displayType == 'artist'">
+        <table>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Popularity</th>
+            </tr>
+            <tr data-ng-repeat="item in result.artists.items">
+                <td><div class="box" data-ng-if="item.images"><img width="64" height="64" src="{{ item.images[0].url }}"></div></td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.popularity }}</td>
+            </tr>
+        </table>    
+        </div>
+    
+        <div data-ng-if="displayType == 'album'">
+        <table>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Artists</th>
+            </tr>
+            <tr data-ng-repeat="item in result.albums.items">
+                <td><div class="box" data-ng-if="item.images"><img width="64" height="64" src="{{ item.images[0].url }}"></div></td>
+                <td>{{ item.name }}</td>
+                <td><p data-ng-repeat="artistItem in item.artists">{{ artistItem.name }}</p></td>
+            </tr>
+        </table>    
+        </div>
+    </div>
+    
+</div>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--
+Author: Giovanni Massafra
+-->
+<html>
+    
+    <head>
+        <title>SpotifyWebApp</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet/less" type="text/css" href="scss/styles.less" />
+    </head>
+    
+    <body>
+        <div ng-app="SpotifyWebApp">
+            <ui-view></ui-view>
+        </div>
+        
+        <script src="bower_components/less/dist/less.min.js"></script>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+        <script src="app/resources/spotify.js"></script>
+        <script src="app/searchView/searchCtrl.js"></script>
+        <script src="app.js"></script>
+        <script src="config.js"></script>
+    </body>
+        
+    
+
+</html>
