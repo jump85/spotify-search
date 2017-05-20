@@ -2,7 +2,7 @@
 
 var configModule = angular.module('configModule', []);
 
-	var CONTEXT_ROOT_WEB = '/spotify-search/public_html/';
+	var CONTEXT_ROOT_WEB = '/spotify-search/public_html';
 
 
 	var CONSTANTS = {
@@ -12,3 +12,4 @@ var configModule = angular.module('configModule', []);
 	};
 
 	configModule.constant('CONSTANTS', CONSTANTS);
+        
