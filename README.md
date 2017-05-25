@@ -1,6 +1,6 @@
 # spotify-search
 
-A search engine based on Spotify API
+A search engine based on Spotify API v1
 
 # Technologies
 This web application is realized the following technologies:
