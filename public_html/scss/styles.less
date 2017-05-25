@@ -1,4 +1,7 @@
-@base: #4CAF50;
+@base: #383A49;
+@reswidth: 250px;
+@modalBgUrl : '';
+@footerSize : 50px;
 
 @font-face {
     font-family: "Raleway";
@@ -13,35 +16,42 @@
   .box-shadow(@style, rgba(0, 0, 0, @alpha));
 }
 
+html, body {  height: 100%; }
+
 body{
     font-family: Raleway, Helvetica, sans-serif;
+    color: #ffffff;
+    margin: auto;
+    background-color: @base;
 }
 
-table { 
-    margin: 0 auto;
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+.container {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -@footerSize; 
+}
+
+.head{
+    background-color: #B2455D;
     width: 100%;
 }
 
-input{
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    border-radius: 30px;
-    width: 100px;
-    height: 0;
-    border: solid;
-    border-width: 1px;
-    padding: 20px;
+.footer, #push {
+    height: @footerSize; 
 }
-select{
-    background-color:#ffffff;
-    appearance: none;  
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    border-radius: 30px;
-    width: 100px;
-    height: 40px;
-    border: solid;
-    border-width: 1px;
+
+.footer{
+    background-color: #333441;
+    text-align: center;
+    font-size: 12px;
+    font-weight: normal;
+    padding-top: 25px;
 }
 
 .logo{
@@ -49,57 +59,114 @@ select{
     margin: 0 auto;
 }
 
+.geeklogo{
+    padding: 50px 0 0 10px;
+    display: inline;
+    width: 70%;
+}
+
+.powered{
+    margin: 10px 10px;
+    text-align: right;
+    display: inline;
+    font-size: 12px;
+    width: 50%;
+    clear: both;
+    float:right;
+}
 
 .content{
-    width: 98%;
+    width: 100%;
     margin: 0 0 0 0;
 }
-.box {
-    color: saturate(@base, 10%);
-    border-color: lighten(@base, 30%);
-    background-color: lighten(@base, 45%);
-    /* .box-shadow(0 0 5px, 30%); */
-    margin: 20px 0px;
-    padding: 10px;
-}
+
 
 .search{
     width: 100%;
+    height: 80%;
     margin: auto;
-    table{
-        border-spacing: 0 1em;
-        border-collapse: separate;
-        padding: 3%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: #333441;
+    .text{
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        border-radius: 30px;
+        background-color: #FFF;
+        width: 500px;
+        padding: 5px 0 5px 15px;
+        margin: auto;
     }
-
+    
+    input{
+        width: 367px;
+        border: 0;
+        height: 30px;
+        color: #A39595;
+        font-size: 16px;
+        font-weight: bold;
+    }
 }
 
 
 .result{
-    padding: 5%;
-    table{
-        border-spacing: 0 0.5em;
-        border-collapse: separate;
+    background-color: @base;
+    
+    .box {
+        color: @base;
+        //border: 2px solid;
+        //border-color: #383A49;
+        //border-radius: 30px;
+        //background-color: lighten(@base, 45%);
+        .box-shadow(0 0 5px, 30%); 
+        margin: 2% 2%;
+        width: @reswidth;
+        //height: 200px;
+        display: inline-block;
+        z-index: 2;
+        //height: 350px;
+        position: relative;
     }
-    th, td{
+    
+    .image{
+        width: @reswidth;
+        height: @reswidth;
+        z-index: 1;
+    }
+    .icon{
+        position: absolute;
+        z-index: 3;
+        top: 210px;
+        left: 10px;
+        width: 32px;
+    }
+    .noimage{
+        width: @reswidth;
+        height: @reswidth;
+        background-color: #000000;
         text-align: center;
-        padding: 0 5% 0 5%;
+        color: #FFF;
     }
-    tr{
-        .box-shadow(0 0 5px, 30%);
+
+    .caption{
+        background-color: white;
+        //height: 50px;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 20px 20px;
+        position: relative;
+        top: -5px;
     }
 }
 
 .button{
     display: inline;
-    clear:both;
-    float: right;
-    text-align: right;
     padding-top: 0;
     margin-right: 0;
     width: 200px;
     button {
-        background-color: #4CAF50; /* Green */
+        background-color: #D05D84; 
         border: none;
         color: white;
         padding: 12px 22px;
@@ -119,3 +186,109 @@ select{
 .separator{
     margin: 0 30px;
 }
+
+.ng-modal-overlay {
+  /* A dark translucent div that covers the whole screen */
+  position:absolute;
+  z-index:9999;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#000000;
+  opacity: 0.5;
+}
+.ng-modal-dialog {
+  /* A centered div above the overlay with a box shadow. */
+  z-index:10000;
+  position: absolute;
+  width: 50%; /* Default */
+
+  /* Center the dialog */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+
+  background-color: #fff;
+  box-shadow: 4px 4px 80px #000;
+}
+.ng-modal-dialog-content {
+  padding:0;
+  text-align: left;
+  color: #000;
+  font-weight: bold;
+}
+.ng-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 120%;
+  display: inline-block;
+  font-weight: bold;
+  font-family: 'arial', 'sans-serif';
+  z-index: 10010;
+  background-image: url("../Assets/Images/Cross@2x.png");
+  background-size: 32px;
+}
+
+.ng-modal-header{
+    width: 100%;
+    height: 250px;
+}
+
+.ng-modal-image{
+    width: 750px;
+    height: 500px;
+    position: absolute;
+    top: -2px;
+    clip: rect(0px,750px,250px,0px);
+    opacity: 0.8;
+}
+.ng-modal-data{
+    padding: 20px 20px;
+    hr{
+        border: none;
+        height: 1px;
+        background-color: #eee;
+    }
+}
+
+.ng-modal-list{
+    overflow: hidden;
+    overflow-y: auto;
+    //max-width:500px;
+    max-height:300px;
+    padding-right: 17px;
+}
+
+.ng-modal-row{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+
+.ng-modal-icon{
+    width: 90px;
+}
+
+.ng-modal-col{
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+.ng-modal-caption{
+    z-index: 10010;
+    position: relative;
+    top: 190px;
+    left: 25px;
+    color: #FFF;
+    font-size: 36px;
+    text-shadow: 1px 1px #555;
+}
+

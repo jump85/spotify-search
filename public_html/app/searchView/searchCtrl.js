@@ -1,14 +1,17 @@
 'use strict';
 
+
 angular.module('searchView', [])
 .controller('SearchCtrl', ['$scope','SpotifyResource', 'CONSTANTS', function($scope, SpotifyResource, CONSTANTS) {
     $scope.CONSTANTS = CONSTANTS;
     
     $scope.search = {};
     $scope.search.text = '';
-    $scope.search.type = 'artist';
-    $scope.search.limit = 50;
+    $scope.search.type = 'artist,album';
+    $scope.search.limit = 20;
     $scope.displayType = '';
+    $scope.modalShown = false;
+    $scope.currentItem = {};
     
     $scope.result = {};
     
@@ -16,14 +19,33 @@ angular.module('searchView', [])
         
         $scope.result = SpotifyResource.search().get($scope.search, 
             function (res){
-                if($scope.search.type == 'artist')
-                    $scope.totalItems = res.artists.total;
-                else
-                    $scope.totalItems = res.albums.total;
+                $scope.totalItems = res.artists.total + res.albums.total;
             }
         );
  
         $scope.displayType = $scope.search.type;
         console.log($scope.result);
+    }
+    
+    $scope.toggleModal = function(item) {
+        $scope.modalShown = !$scope.modalShown;
+        
+        if($scope.modalShown && item){
+            $scope.currentItem = item;
+            $scope.currentItem.modalData = {};
+        
+            if(item.type == 'album'){
+                $scope.currentItem.modalData = SpotifyResource.getAlbumTracks().get(item);
+            }else if (item.type == 'artist'){
+                $scope.currentItem.modalData = SpotifyResource.getArtistAlbums().get(item);
+            }
+            console.log($scope.currentItem);
+        }else{
+            $scope.currentItem = {};
+        }
+    };
+    
+    $scope.hideModal = function(){
+        $scope.modalShown = false;
     }
 }]);

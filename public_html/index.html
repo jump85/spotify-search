@@ -12,14 +12,19 @@ Author: Giovanni Massafra
     </head>
     
     <body>
-        <div ng-app="SpotifyWebApp">
+        <div class="container" ng-app="SpotifyWebApp">
             <ui-view></ui-view>
+            <div id="push"></div>
+        </div>
+        <div class="footer">
+            Made by Giovanni Massafra
         </div>
         
         <script src="bower_components/less/dist/less.min.js"></script>
         <script src="bower_components/angular/angular.min.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+        <script src="app/directives/modal.js"></script>
         <script src="app/resources/spotify.js"></script>
         <script src="app/searchView/searchCtrl.js"></script>
         <script src="app.js"></script>

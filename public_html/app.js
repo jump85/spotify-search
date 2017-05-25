@@ -4,11 +4,11 @@ angular.module('SpotifyWebApp', [
   'ui.router',
   'configModule',
   'spotifyResources',
+  'modalDirectives',
   //'headerView',
   'searchView'
 ]).
 config(function($stateProvider, $urlRouterProvider, CONSTANTS) {
-
   $urlRouterProvider.otherwise("/search");
 
   $stateProvider
