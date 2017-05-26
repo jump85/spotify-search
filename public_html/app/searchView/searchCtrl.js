@@ -9,22 +9,25 @@ angular.module('searchView', [])
     $scope.search.text = '';
     $scope.search.type = 'artist,album';
     $scope.search.limit = 20;
-    $scope.displayType = '';
+    $scope.search.displayResults = false;
     $scope.modalShown = false;
     $scope.currentItem = {};
+    $scope.totalItems = 0;
     
     $scope.result = {};
     
     $scope.send = function (){
-        
-        $scope.result = SpotifyResource.search().get($scope.search, 
-            function (res){
-                $scope.totalItems = res.artists.total + res.albums.total;
-            }
-        );
+        if($scope.search.text.length > 1 && $scope.search.text.length < 30) {
+            $scope.search.displayResults = true;
+            $scope.result = SpotifyResource.search().get($scope.search, 
+                function (res){
+                    $scope.totalItems = res.artists.total + res.albums.total;
+                }
+            );
+        }
  
         $scope.displayType = $scope.search.type;
-        console.log($scope.result);
+        //console.log($scope.result);
     }
     
     $scope.toggleModal = function(item) {
@@ -39,7 +42,7 @@ angular.module('searchView', [])
             }else if (item.type == 'artist'){
                 $scope.currentItem.modalData = SpotifyResource.getArtistAlbums().get(item);
             }
-            console.log($scope.currentItem);
+            //console.log($scope.currentItem);
         }else{
             $scope.currentItem = {};
         }

@@ -14,9 +14,10 @@
         </div>
     </div>
     
-    <div class="noitems" data-ng-if="displayType != '' && totalItems == 0">No items found. Try again! </div>
+    <div class="noitems" data-ng-if="!search.displayResults">You have to digit at least 2 characters in the input search </div>
+    <div class="noitems" data-ng-if="search.displayResults && totalItems == 0">No items found. Try again! </div>
     
-    <div class="result" data-ng-if="displayType != '' && totalItems > 0">
+    <div class="result" data-ng-if="search.displayResults && totalItems > 0">
     
         
         <div class="box" data-ng-repeat="item in result.artists.items"  >
