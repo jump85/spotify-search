@@ -12,7 +12,7 @@ grunt.initConfig({
       },
       dist: {
         src: ['public_html/**/*.js'],
-        dest: 'public_html/<%= pkg.name %>.js'
+        dest: 'public_html/target/<%= pkg.name %>.js'
       }
     },
     uglify: {
@@ -62,6 +62,5 @@ grunt.initConfig({
   grunt.loadNpmTasks('grunt-contrib-concat');
 
   grunt.registerTask('test', ['jshint', 'karma']);
-
-  grunt.registerTask('build', ['jshint', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
 };
